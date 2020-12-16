@@ -1,0 +1,150 @@
+package akash;
+import java.io.IoException;
+
+public class OptionMenu extends Account{
+
+	Scanner menuInput = new Scanner(System.in);
+DecimalFormat moneyFormat = new DecimalFormat("'$'###,##0.00");
+
+	HashMap<integer, Integer> data = new HashMap<Integer, Integer>();
+
+
+	public void getLogin() throws IOException {
+
+	int x=1;
+do  {
+	try {
+
+		data.put(12345,8765);
+		data.put(78993,4562);
+
+	System.out.println("welcome to atm");
+	System.out.println("enter your customer number");
+	SetCustomerNumber(menuInput.nextInt());
+
+	System.out.println("enter pin number");
+	setPinNumber(menuInput.nextInt());
+}	catch (Exception e)  {
+System.out.println("\n"+"invalid character(s). only numbers"+"\n");
+	x=2;
+
+	}
+	
+	for (Entry<Integer,Integer>entry: data.entrySet()) {
+	if (entry.getKey() == getCustomerNumber() && entry.getValue() == getPinNumber())
+	getAccountType();
+	
+	System.out.println("\n"+"wrong customer or pin number"+"\n");
+	} while(x == 1);
+	
+} 
+	
+     public void getAccountType() {
+	System.out.println("select the account to access:");
+	System.out.println("type 1: checking account");
+	System.out.println("type 2: saving account:");
+	System.out.println("type 3: exit");
+	System.out.print("choice:");
+	
+	selection = menuInput.nextInt();
+	
+	switch(selection)  {
+	
+	case 1:
+	getChecking();
+	break;
+
+	case 2:
+	getSaving();
+	break;
+
+	case 3:
+		System.out.println("thanks for using!!!");
+		break;
+
+	default: 
+		System.out.println("\n"+"invalid choice"+"\n");
+		getAccountType();
+	}
+
+
+	}
+
+
+	public void getChecking() {
+
+	System.out.println("checking account:");
+	System.out.println("type 1 - view balance:");
+	System.out.println("type 2 - withdraw fund:");
+	System.out.println("type 3 - deposit funds:");
+	System.out.println("type 4 - exit:");
+	System.out.println("choice:");
+
+	selection = menuInput.nextInt();
+
+
+	switch (selection) {
+
+	case 1: 
+		System.out.println("checking  account balance:" +  moneyFormat.format(getChecking));
+			getAccountType();
+			break;
+	case 2: 
+		getCheckingWithdrawInput();
+		getAccountType();
+		break;
+	case 3:
+		getCheckingDepositInput();
+		getAccountType();
+		break;
+	case 4: 
+		System.out.println("thanks for using atm!!! bye :");
+		break;
+
+	default:
+		System.out.println("\n" + "invalid choice" + "\n");
+		getSaving();
+
+		}
+	}
+	public void getsaving() {
+	system.out.println("saving account:");
+	system.out.println("type 1: view balance");
+
+	system.out.println("type 2: withdraw funds");
+
+	system.out.println("type 3: deposit funds");
+	system.out.println("type 4: exit");
+	system.out.println("choice:");
+	
+	selection = menuInput.nextInt();
+	
+	switch(selection)  {
+	
+	case 1:
+	
+	system.out.println("savings account balance" + moneyFormat(getSavingBalance));
+	getaccountType();
+	break;
+
+	case 2: 
+	getSavingWithdrawInput();
+	getAccountType();
+	break;
+
+	case 3:
+	getSavingDepositInput();
+	getAccountType();
+	break;
+	
+	case 4:
+	system.out.println("thank you");
+	break;
+		
+	default:
+	system.out.println("\n" + "invalid choice" + "\n");
+	getSaving();
+	}
+  }
+ 	int selection;
+}
